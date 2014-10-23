@@ -24,8 +24,3 @@ services:
       # can be uncommented if using "cti/bbox-client-bundle" as a dependency
       #- [ addSubscriber, [@bbox_guzzle_subscriber] ]
 
-  # the rest client instantiator
-  tee_snap_restapi_client.rest :
-    parent : cti_rest_client.rest_parent
-    calls  :
-      - [ setDescription, [ 'RestClientBundle/Resources/config/services_description.json' ] ]
