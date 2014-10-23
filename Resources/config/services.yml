@@ -19,7 +19,7 @@ services:
       - %cti_rest_client_url_base%
       - %guzzle_client_timeout%
     calls :
-      - [ setLocator, [ @tee_snap.resource_locator ] ]
+      - [ setLocator, [ @cti_rest_client.resource_locator ] ]
       # example for setting base authentication
       #- [ authenticate, [%api_username%, %api_password%] ]
       # can be uncommented if using "cti/bbox-client-bundle" as a dependency
