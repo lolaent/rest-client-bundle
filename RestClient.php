@@ -10,8 +10,8 @@ use JMS\Serializer\SerializerBuilder;
 use Misd\GuzzleBundle\Service\Command\JMSSerializerResponseParser;
 use Misd\GuzzleBundle\Service\Command\LocationVisitor\Request\JMSSerializerBodyVisitor;
 use Symfony\Component\HttpFoundation\Response;
-use Cti\RestClientBundle\Services\ResourceLocator;
-use Cti\RestClientBundle\Exception\ResponseException;
+use CTI\RestClientBundle\Services\ResourceLocator;
+use CTI\RestClientBundle\Exception\ResponseException;
 use Guzzle\Http\Exception\RequestException;
 
 /**

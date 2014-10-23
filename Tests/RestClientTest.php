@@ -2,13 +2,13 @@
 /**
  * Rest client tests
  *
- * @package Cti\RestClientBundle\Tests
+ * @package CTI\RestClientBundle\Tests
  * @author  Georgiana Gligor <georgiana@cloudtroopers.com>
  */
 namespace CTI\RestClientBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Cti\RestClientBundle\RestClient;
+use CTI\RestClientBundle\RestClient;
 
 /**
  * Class RestClientTest

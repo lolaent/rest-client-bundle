@@ -1,6 +1,6 @@
 <?php
 /**
- * @package Cti\RestClientBundle\Exception
+ * @package CTI\RestClientBundle\Exception
  * @author  Georgiana Gligor <georgiana@cloudtroopers.com>
  */
 namespace CTI\RestClientBundle\Exception;
