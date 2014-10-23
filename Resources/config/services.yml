@@ -1,6 +1,6 @@
 parameters:
-  cti_rest_client.resource_locator.class: Cti\RestClientBundle\Services\ResourceLocator
-  cti_rest_client.class  : Cti\RestClientBundle\RestClient
+  cti_rest_client.resource_locator.class: CTI\RestClientBundle\Services\ResourceLocator
+  cti_rest_client.class  : CTI\RestClientBundle\RestClient
   # please override this in your application configuration file
   cti_rest_client_url_base : INTENTIONALLY_BROKEN
 
