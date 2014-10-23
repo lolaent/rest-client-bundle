@@ -3,6 +3,7 @@ parameters:
   cti_rest_client.class  : CTI\RestClientBundle\RestClient
   # please override this in your application configuration file
   cti_rest_client_url_base : INTENTIONALLY_BROKEN
+  guzzle_client_timeout: 10
 
 services:
 
