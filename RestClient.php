@@ -1,6 +1,6 @@
 <?php
 
-namespace Cti\RestClientBundle;
+namespace CTI\RestClientBundle;
 
 use Guzzle\Service\Client;
 use Guzzle\Service\Command\DefaultResponseParser;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Cti\RestClientBundle\Services;
+namespace CTI\RestClientBundle\Services;
 
 class ResourceLocator
 {

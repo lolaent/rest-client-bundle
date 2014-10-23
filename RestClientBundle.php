@@ -1,6 +1,6 @@
 <?php
 
-namespace Cti\RestClientBundle;
+namespace CTI\RestClientBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

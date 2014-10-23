@@ -5,7 +5,7 @@
  * @package Cti\RestClientBundle\Tests
  * @author  Georgiana Gligor <georgiana@cloudtroopers.com>
  */
-namespace Cti\RestClientBundle\Tests;
+namespace CTI\RestClientBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Cti\RestClientBundle\RestClient;
