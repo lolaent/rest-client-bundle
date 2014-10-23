@@ -1,0 +1,31 @@
+parameters:
+  cti_rest_client.resource_locator.class: Cti\RestClientBundle\Services\ResourceLocator
+  cti_rest_client.class  : Teesnap\RestClientBundle\RestClient
+  # please override this in your application configuration file
+  cti_rest_client_url_base : INTENTIONALLY_BROKEN
+
+services:
+
+  # allows easy location of resources
+  cti_rest_client.resource_locator:
+    class: %cti_rest_client.resource_locator.class%
+    arguments:
+      - @kernel
+
+  cti_rest_client.rest_parent :
+    class : %cti_rest_client.class%
+    arguments :
+      - %cti_rest_client_url_base%
+      - %guzzle_client_timeout%
+    calls :
+      - [ setLocator, [ @tee_snap.resource_locator ] ]
+      # example for setting base authentication
+      #- [ authenticate, [%api_username%, %api_password%] ]
+      # can be uncommented if using "cti/bbox-client-bundle" as a dependency
+      #- [ addSubscriber, [@bbox_guzzle_subscriber] ]
+
+  # the rest client instantiator
+  tee_snap_restapi_client.rest :
+    parent : cti_rest_client.rest_parent
+    calls  :
+      - [ setDescription, [ 'RestClientBundle/Resources/config/services_description.json' ] ]

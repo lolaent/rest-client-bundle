@@ -1,0 +1,39 @@
+{
+    "name" : "ApiOperations",
+    "description" : "ApiOperations",
+    "operations" : {
+        "apiStatus" : {
+            "httpMethod" : "GET",
+            "uri" : "systemstatus",
+            "summary" : "get API version information",
+            "responseClass" : "ApiStatusResponse",
+            "parameters" : {
+                "Content-Type" : {
+                    "location" : "header",
+                    "type" : "string",
+                    "default" : "application/json"
+                },
+                "bboxLabel" : {
+                    "location" : "header",
+                    "type" : "string",
+                    "default" : "LixarApi"
+                }
+            }
+        }
+    },
+    "models" : {
+        "ApiStatusResponse" : {
+            "type" : "object",
+            "properties" : {
+                "dbAvailable" : {
+                    "location" : "json",
+                    "type" : "boolean"
+                },
+                "version" : {
+                    "location" : "json",
+                    "type" : "string"
+                }
+            }
+        }
+    }
+}
