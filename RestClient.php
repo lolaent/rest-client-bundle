@@ -36,13 +36,11 @@ class RestClient
     /**
      * Class constructor
      *
-     * @param string $uri
      * @param int    $guzzleTimeout
      */
-    public function __construct($uri = null, $guzzleTimeout)
+    public function __construct($guzzleTimeout)
     {
         $this->client = new Client();
-        $this->client->setBaseUrl($uri);
         $this->client->setDefaultOption('verify', false);
         $this->client->setDefaultOption('timeout', $guzzleTimeout);
     }
@@ -67,6 +65,26 @@ class RestClient
     public function setLocator(ResourceLocator $locator)
     {
         $this->locator = $locator;
+    }
+
+    /**
+     * @return \Guzzle\Http\Url|string
+     */
+    public function getBaseUrl()
+    {
+        return $this->client->getBaseUrl();
+    }
+
+    /**
+     * @param string $baseUrl
+     *
+     * @return RestClient
+     */
+    public function setBaseUrl($baseUrl)
+    {
+        $this->client->setBaseUrl($baseUrl);
+
+        return $this;
     }
 
     /**
