@@ -168,6 +168,32 @@ class RestClient
     }
 
     /**
+     * Execute several operations in parallel
+     *
+     * @param Operation[] $operations
+     *
+     * @throws Exception\ResponseException
+     *
+     * @return mixed
+     */
+    public function executeParallel($operations = array())
+    {
+        $processed = array();
+        foreach ($operations as $operation) {
+            $processed[] = $this->client->getCommand($operation->getName(), $operation->getArguments());
+        }
+
+        try {
+            $result = $this->client->execute($processed);
+        } catch (\Exception $e) {
+            $statusCode = Response::HTTP_INTERNAL_SERVER_ERROR;
+            throw new ResponseException($e->getMessage(), $statusCode, $e);
+        }
+
+        return $result;
+    }
+
+    /**
      * @param mixed $subscriber
      */
     public function addSubscriber($subscriber)
