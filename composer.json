@@ -16,8 +16,8 @@
     }
   ],
   "require" : {
-    "php"                : ">=5.3.0",
-    "guzzlehttp/guzzle"  : "3.*",
+    "php"                   : ">=5.3.0",
+    "guzzle/guzzle"         : "3.8.1",
     "jms/serializer-bundle" : "0.13.0",
     "misd/guzzle-bundle"    : "~1.1"
   },
