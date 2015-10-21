@@ -6,6 +6,7 @@ use Guzzle\Service\Client;
 use Guzzle\Service\Command\DefaultResponseParser;
 use Guzzle\Service\Description\ServiceDescription;
 use Guzzle\Service\Description\ServiceDescriptionInterface;
+use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use Misd\GuzzleBundle\Service\Command\JMSSerializerResponseParser;
 use Misd\GuzzleBundle\Service\Command\LocationVisitor\Request\JMSSerializerBodyVisitor;
@@ -32,6 +33,11 @@ class RestClient
      * @var ResourceLocator
      */
     protected $locator;
+
+    /**
+     * @var string[]
+     */
+    protected $metadataDirs = array();
 
     /**
      * Class constructor
@@ -102,6 +108,39 @@ class RestClient
     }
 
     /**
+     * @return Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * @param Client $client
+     *
+     * @return RestClient
+     */
+    public function setClient(Client $client)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * @return \string[]
+     */
+    public function getMetadataDirs()
+    {
+        return $this->metadataDirs;
+    }
+
+    public function addMetadataDir($metadataDir)
+    {
+        $this->metadataDirs[] = $metadataDir;
+    }
+
+    /**
      * @param string $uri
      *
      * @return \Guzzle\Http\Message\RequestInterface
@@ -128,7 +167,14 @@ class RestClient
         /** @var \Guzzle\Service\Command\OperationCommand $command */
         $command = $this->client->getCommand($operationName, $parameters);
 
-        $serializer = SerializerBuilder::create()->build();
+        $temp = SerializerBuilder::create();
+        if (!empty($this->metadataDirs)) {
+            foreach ($this->metadataDirs as $metadataDir) {
+                $temp->addMetadataDir($metadataDir);
+            }
+        }
+        $serializer = $temp->build();
+
         $defaultParser = new DefaultResponseParser();
         $responseSerializer = new JMSSerializerResponseParser($serializer, $defaultParser);
         $command->setResponseParser($responseSerializer);
