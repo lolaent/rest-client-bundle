@@ -88,26 +88,6 @@ class RestClient
     }
 
     /**
-     * @return int
-     */
-    public function getTimeout()
-    {
-        return $this->client->getDefaultOption('timeout');
-    }
-
-    /**
-     * @param int $timeout
-     *
-     * @return RestClient
-     */
-    public function setTimeout($timeout)
-    {
-        $this->client->setDefaultOption('timeout', $timeout);
-
-        return $this;
-    }
-
-    /**
      * @param ServiceDescriptionInterface $description
      */
     public function setDescription($description)
